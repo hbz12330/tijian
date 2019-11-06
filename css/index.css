@@ -1,0 +1,51 @@
+*{margin: 0; padding: 0;}
+html{
+    width: 100%;
+    background:darkcyan;
+}
+div.header{
+    display: flex;
+    height: 110px;
+    line-height: 110px;
+    font-size: 1em;
+    border-bottom: 2px solid khaki;
+    color:red;
+    font-weight: bold;
+}
+div.header>span{
+    margin: 0 10px 0 10px;
+    padding: 0 10px 0 10px;
+    font-size: 18px;
+}
+.body{
+    text-align: center;
+    width: 100%;
+}
+.login{
+    margin-top: 25px;
+    border-bottom: 1px solid black;
+}
+.login>p>input{
+    font-size: 25px;
+    margin-bottom: 1px;
+}
+.login>p>button{
+    font-size: 25px;
+    width: 26%;
+    margin-top:1px;
+}
+.login>p>button:last-child{
+    margin-bottom: 1px;
+}
+.sm{
+    position: absolute;
+    left: 250px;
+    right: 250px;
+}
+.sm>div{
+    text-align: left;
+}
+.sm>div>p:first-child,.sm>div>p>b{
+    font-size: 25px;
+    color: brown;
+}

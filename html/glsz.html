@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/jquery-1.11.3.js"></script>
+    <link rel="stylesheet" href="../css/glsz.css" >
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="log"><img src="../img/logo/0.jpg" alt="" srcset="" style="height: 109.69px;"></div>
+            <span>健康体检信息管理系统</span>
+            <div class="nav">
+               <p class="bin">
+                   <span><a href="#">首页</a></span>
+                   <span><a href="#">通知公告</a></span>
+                   <span><a href="#">基础代码</a></span>
+                   <span><a href="#">代码设置</a></span>
+                   <span><a onclick="xt()">系统参数</a></span>
+                   <span><a href="#">疾病建议方案</a></span>
+                </p>
+            </div>
+        </div>
+        <div class="body">
+            <div class="sbin">
+                    <span class="dj"><a>体检登记</a></span>
+                    <span><a href="#">个人缴费</a></span>
+                    <span><a href="#">标本采集</a></span>
+                    <span><a href="#">医生总检</a></span>
+                    <span><a href="#">结果录入</a></span>
+                    <span><a href="#">报告打印</a></span>
+                    <span><a href="#">领取报告</a></span>
+                    <span><a href="#">数据查询</a></span>  
+                    <span><a href="../index.html">安全退出</a></span>  
+            </div>
+           <div class="zhg">
+               <div><div><img src="../img/logo.jpg" alt=""><p>单位维护</p></div></div>
+               <div><div><img src="../img/logo.jpg" alt=""><p>综合管理</p></div></div>
+               <div><div><img src="../img/logo.jpg" alt=""><p>报告打印</p></div></div>
+               <div><div><img src="../img/logo.jpg" alt=""><p>健康证打印</p></div></div>
+               <div><div><img src="../img/logo.jpg" alt=""><p>医生总检</p></div></div>
+               <div><div><img src="../img/logo.jpg" alt=""><p>医生工作站</p></div></div>
+               <div><div><img src="../img/logo.jpg" alt=""><p>综合管理</p></div></div>
+               <div><div><img src="../img/logo.jpg" alt=""><p>结果录入</p></div></div>
+               <div><div class="dj"><img src="../img/logo.jpg" alt=""><p>体检登记</p></div></div>
+               <div><div><img src="../img/logo.jpg" alt=""><p>单位分组</p></div></div>
+           </div>
+        </div>
+    </div>
+</body>
+<script>
+    var url=decodeURI(window.location.href);
+    var fr=url.split('?uname=');
+    var czy=fr[1].substring(0,11);
+    document.querySelector('.dj').addEventListener('click',function(){
+      window.location.href="../html/tjjl.html?czy="+czy
+   })
+   document.querySelector('div.dj').addEventListener('click',function(){
+      window.location.href="../html/tjjl.html?czy="+czy
+   });
+   function xt(){
+    window.location.href="../html/xtsz.html?czy="+czy
+   }
+</script>
+</html>

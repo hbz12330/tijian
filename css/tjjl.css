@@ -1,0 +1,93 @@
+*{margin: 0; padding: 0;}
+html{
+    width: 100%;
+    background:darkcyan;
+}
+div.header{
+    display: flex;
+    height: 110px;
+    line-height: 110px;
+    font-size: 1em;
+    border-bottom: 2px solid khaki;
+    color:red;
+    font-weight: bold;
+}
+.bodya{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+div.bodyb{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.bodyb>.left{
+    width:49.5%;
+    background: papayawhip;
+    border: 1px solid;
+}
+div.yt{
+    display: flex;
+    justify-content: space-between;
+    
+}
+div.yt>div{
+    text-align: center;
+  
+}
+div.yt{
+    font-size: 13px;
+}
+.bodyb>.right{
+    width:49.5%;
+    border: 1px solid;
+    background: papayawhip;
+}
+.left>.a{
+    border: 1px solid darkblue;
+}
+
+.title{
+    display:flex;
+    justify-content: space-between;
+}
+.title>div>span{
+    margin: 0 5px 0 5px;
+}
+a{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+.dy{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.dy>div{
+    width: 45%;
+    margin-bottom: 10px;
+}
+.dya{
+  width: 100%;
+  background: palevioletred;
+  padding: 0;
+}
+.dya>button{
+    width: 100%;
+    margin: 0;
+}
+#wi{
+    display: flex;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    line-height: 50px;
+}
+#my{
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    line-height: 50px; 
+}

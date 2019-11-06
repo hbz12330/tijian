@@ -1,0 +1,57 @@
+*{margin: 0; padding: 0;}
+html{
+    width: 100%;
+    background:darkcyan;
+}
+div.header{
+    display: flex;
+    height: 110px;
+    line-height: 110px;
+    font-size: 1em;
+    border-bottom: 2px solid khaki;
+    color:red;
+    font-weight: bold;
+}
+
+.body div{
+    display: flex;
+    font-size: 18px;
+}
+.body div div{
+    margin-right: 10px;
+    color: white;
+}
+.body div div:last-child{
+    margin-right: 0; 
+}
+.Outside .title{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+.foot div{
+    text-align: center;
+    margin-bottom: 1px;
+}
+.foot div textarea{
+    border: 0;
+    height: 23px;
+    font-size: 20px;
+}
+.fboot div input{
+    margin-bottom: 2px;
+    border: 0;
+    width: 517px;
+    height: 29px;
+    font-size: 20px;
+}
+.fboot div button{
+    margin-bottom: 2px;
+    border: 0;
+    width: 517px;
+    height: 25px;
+    font-size: 20px;
+}
+.active{
+    background: red;
+}

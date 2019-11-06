@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/jquery-1.11.3.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="container">
+            <div class="header">
+                <div class="log"><img src="./img/logo/0.jpg" alt="" srcset="" style="height: 109.69px;"></div>
+                <span>健康体检信息管理系统----用户登录</span>
+            </div>
+            <div class="body">
+                <div class="login">
+                    <p><input type="text" id="uname" placeholder="请输入操作员姓名"></p>
+                    <p><span class="nts"></span></p>
+                    <p><input type="password" id="upwd" placeholder="请输入用户密码"></p>
+                    <p><span class="pts"></span></p>
+                    <p><input type="text"  id="jobNane" placeholder="请输入操作员工号"></p>
+                    <p><span class="dlts"></span></p>
+                    <p><button type="button" id="btn">登录</button></p>
+                    <p><button type="button" id="cz">重置</button></p>
+                </div>
+                <div class="sm">
+                    <div>
+                        <p>此系统为体检信息管理专用系统，系统用户分为管理员和操作员两个级别。</p>
+                        <p><b>管理员权限：</b>对系统内所有的数据进行全面的管理和操作，例如添加操作员、添加数据、删除操作员等操作！</p>
+                        <p><b>操作员权限：</b>拥有添加录入数据、打印报表等操作！</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+   <script>
+        $(document).ready(function(){
+            var cz=document.getElementById('cz');
+         cz.addEventListener('click',function(){
+           document.getElementById('uname').value="";
+           document.getElementById('upwd').value="";
+           document.getElementById('jobNane').value=""; 
+         });
+         /*按下tab键触发
+         $("#uname").keydown(function (event) {
+            //alert(event.keyCode);
+             if(event.keyCode==9){
+                var un=$("#uname").val();
+                console.log(un)
+             }
+         });*/
+         //用户姓名鼠标离开后触发
+            $("#uname").blur(function () {
+               /* var reg= /[\u4e00-\u9fa5]/g;
+                var un=$(this).val();
+               if(un!=""){
+                   var str=un.match(reg);
+                   if(str==null){
+                       document.querySelector("span.nts").innerHTML=`用户姓名输入错误`
+                       return;
+                   }else{
+                       document.querySelector("span.nts").innerHTML=`输入正确`
+                   }
+               }*/
+                let uname=document.getElementById('uname').value;
+               $.ajax({
+                   type:'get',
+                   url:'http://127.0.0.1:3000/index/qqzb',
+                   data:{uname},
+                   dataType:'json',
+                   timeout:3000,
+                   success:function (data) {
+                     if(data==false){
+                        document.querySelector('.nts').innerHTML="该用户不存在，请检查输入是否正确"
+                        // $('.nts').innerHTML="该用户不存在，请检查输入是否正确"
+                     }else{
+                         document.querySelector('.nts').innerHTML="当前登录的用户是："+uname
+                     }
+                   }
+
+               })
+            });
+            $("#upwd").blur(function () {
+                let reg=/[0-9a-zA-Z]{3,8}/;
+                let zz=$(this).val();
+                if(zz!=""){
+                    var str=zz.match(reg);
+                    if(str==null){
+                        document.querySelector('.pts').innerHTML="密码不符，请使用3~8位数字和字母的结合"
+                        return;
+                    }else{
+                        document.querySelector('.pts').innerHTML="密码符合规范"
+                    }
+                }
+            })
+         document.getElementById("btn").addEventListener('click',function(){
+             let uname=document.getElementById('uname').value;
+             let upwd=document.getElementById('upwd').value;
+             let jobNane=document.getElementById('jobNane').value; 
+             if(jobNane==null){
+                 document.querySelector('.dlts').innerHTML="操作员工号不能为空"
+             }else{
+                 $.ajax({
+                     type:'get',
+                     url:'http://127.0.0.1:3000/index',
+                     data:{uname,upwd,jobNane},
+                     dataType:'json',
+                     timeout:3000,
+                     success:function(data){
+                         if(data.msg=="登录失败"){
+                             document.querySelector("span.dlts").innerHTML=`对不起，登录失败,请检查`
+                             //alert(`您输入的姓名、密码和工号可能存在问题,`)
+                             //msgbox("请检查登录用户姓名/密码/工号是否正确",1)\
+                             return;
+                         }else{
+                             window.location.href="./html/glsz.html?uname="+uname                     }
+                     }
+                 })
+             }
+         })
+        })
+   </script>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/tjjl.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="log"><img src="../img/logo/0.jpg" alt="" srcset="" style="height: 109.69px;"></div>
+            <span>健康体检信息管理系统----体检登记</span>
+        </div>
+        <div class="body">
+            <div class="bodya">
+                <div class="d1">
+                    <div>编号：<input type="text" id="it1" style="width: 150px"></div>
+                    <div>姓名：<input type="text" id="unt" maxlength="10" style="width: 150px"></div>
+                    <div>性别：
+                        <select name="sex" id="sex" style="width:100px">
+                            <option value="">请选择</option>
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d2">
+                    <div>证件号码：<input type="text" id="zj" maxlength="20" style="width: 150px"></div>
+                    <div>所在单位：<input type="text" id="dw" maxlength="30" style="width: 150px"></div>
+                    <div>住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所：<input type="text" id="zs" maxlength="30" style="width: 150px"></div>
+                </div>
+                <div class="d3">
+                    <div>体检类目：
+                        <select name="lm" id="lm" style="width: 100px"></select>
+                    </div>
+                    <div>联系电话：<input type="text" id="tel" maxlength="11" style="width: 150px"></div>
+                    <div>费用合计：<span id="fy" style="width: 150px">0</span></div>
+                </div>
+            </div>
+            <hr>
+            <div class="title">
+                <div>
+                    <span>已审核</span>
+                    <span>待审核</span>
+                    <span class="sy">首页</span>
+                    <span class="zx">注销</span>
+                </div>
+                <div>
+                    <span id="luru">登记录入</span>
+                    <span id="cjl">记录查询</span>
+                </div>
+            </div>
+            <!--主体内容下半部分-->
+            <div class="bodyb">
+                <div class="left">
+                    <div class="a" >
+                        <div class="lb" style="text-align: center;font-size: 18px;">信息登记查询（仅查询最新10条记录）</div>
+                        <hr>
+                        <div class="ct">
+                               
+                        </div>
+                        
+                    </div>
+                    <div class="b">医生汇总表</div>
+                </div>
+                <div class="right">
+                   <div class="a1"></div>
+                    <hr>
+                    <div class="a2" style="border-bottom: 1px solid blue;">
+                        <div style="text-align: center;font-size: 18px;">登记信息（以下为打印内容）</div>
+                        <hr style="margin-bottom: 5px">
+                         <!--startprint-->
+                        <div style="font-size: 20px;text-align: center;color: crimson;">xxxx医院健康体检登记表</div>
+                        <div class="dy">
+                            <div>编号：<span class="bh"></span></div>
+                            <div>姓名:<span class="unt"></span></div>
+                            <div>性别：<span class="xb"></span></div>
+                            <div>证件号码：<span class="zj"></span></div>
+                            <div>所在单位：<span class="dw"></span></div>
+                            <div>住所：<span class="zs"></span></div>
+                            <div>体检类目：<span class="lm"></span></div>
+                            <div>联系电话：<span class="tel"></span></div>
+                            <div>费用合计：<span class="fy"></span></div>
+                            <div>打印时间：<span class="date"></span></div>
+                        </div>
+                        <hr>
+                    <div style="text-align: center">注意事项</div>
+                    <p>1.本体检登记表为本院体检信息记录表</p>
+                    <p>2.本体检登记表为本院体检信息记录表</p>
+                    <p>3.本体检登记表为本院体检信息记录表</p>
+                    <p>4.本体检登记表为本院体检信息记录表</p>
+                    <p>5.本体检登记表为本院体检信息记录表</p>
+                    <!--endprint-->
+                    </!--startprint-->
+                    <div class="dya">
+                        <button id="dya" onClick="doPrint()">打印</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+        var url=decodeURI(window.location.href);
+        var fr=url.split('?czy=');
+        var czy=fr[1].substring(0,11);
+        $(".a1").html("操作员:"+czy);
+       function getRandomCode(length) {
+        if(length>0){
+            var data = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+            var nums = "";
+            for (var i = 0; i < length; i++) {
+                var r = parseInt(Math.random() * 35);
+                nums += data[r];
+            }
+            return nums;
+        }else {
+            return false;
+        }
+       }
+    var res = getRandomCode(8);
+    document.querySelector("#it1").value=res;
+    $.get('http://127.0.0.1:3000/xxdj',function(result){
+       var list=result.result
+       var html="";
+       for(let item of list){
+        html+=`<div class="yt"><div style="width:10%">${item.serial}</div><div style="width:16%">${item.xname}</div><div style="width:10%">${item.xsex}</div><div style="width:50%">${item.xmonad}</div><divstyle="width:14%">${item.tel}</divstyle="width:14%"></div>`
+
+ };
+        document.querySelector("div.ct").innerHTML=html;
+       $.get("http://127.0.0.1:3000/xxdj/lm",function (result) {
+          let html="";
+          let salary=0;
+          for (let item of result){
+           html+=`<option value="${item.lm}">${item.lm}</option>`
+          }
+         document.getElementById("lm").innerHTML=html;
+       });
+        let bh=$('#it1').val()
+        document.querySelector(".bh").innerHTML=bh;
+    });
+        function zx(){
+            window.location.href="../index.html"
+        };
+        function sy(){
+            window.location.href="./glsz.html"
+        };
+        $('#sex').change(function () {
+            if($(this).val()==""){
+                alert("性别不正确")
+            }
+             document.querySelector(".xb").innerHTML=$(this).val();
+        });
+        $('#unt').bind(`input propertychange`,function () {
+            document.querySelector(".unt").innerHTML=$(this).val();
+        });
+        $('#zj').bind(`input propertychange`,function () {
+            document.querySelector(".zj").innerHTML=$(this).val();
+        });
+        $('#dw').bind(`input propertychange`,function () {
+            document.querySelector(".dw").innerHTML=$(this).val();
+        });
+        $('#zs').bind(`input propertychange`,function () {
+            document.querySelector(".zs").innerHTML=$(this).val();
+        });
+        $('#lm').change(function () {
+            if($(this).val()=="请选择"){
+                alert("体检类目错误")
+                document.querySelector(".lm").innerHTML="";
+                return;
+            }
+            document.querySelector(".lm").innerHTML+=`<span style="margin-right: 5px">`+$(this).val()+`</span>`;
+            var lm=$(this).val()
+            console.log(lm)
+            $.ajax({
+                type:'get',
+                url:'http://127.0.0.1:3000/xxdj/cfy',
+                data:{lm},
+                dataType:'json',
+                timeout:3000,
+                success:function(data){
+                    let hj=data[0].salary;
+                    let cs=document.getElementById("fy").innerHTML;
+                    let str=parseInt(cs);
+                    let jg=str+hj;
+                    document.getElementById("fy").innerHTML=jg;
+                   document.querySelector(".fy").innerHTML="￥"+jg+"元";
+                }
+            })
+        });
+        function dy(){
+           var day=new Date();
+           day.setTime(day.getTime());
+           var n=day.getUTCFullYear();
+           var y=day.getMonth()+1;
+           var s=day.getHours();
+           var r=day.getDate();
+           var f=day.getMinutes();
+           var m=day.getSeconds();
+           if(y<10){
+               y="0"+y
+           };
+           if(r<10){
+               r="0"+r;
+           }
+           if(s<10){
+               s="0"+s;
+           };
+           if(f<10){
+               f="0"+f;
+           }
+           if(m<10){
+               m="0"+m;
+           }
+           var s=n+"-"+y+"-"+r+":"+s+":"+f+":"+m;
+           document.querySelector(".date").innerHTML=s;
+
+        }dy()
+        setInterval(dy,1000)
+        $('#tel').bind(`input propertychange`,function () {
+            document.querySelector(".tel").innerHTML=$(this).val();
+        });
+        $('#fy').bind(`input oninput`,function () {
+            document.querySelector(".fy").innerHTML=$(this).val();
+        });
+        $("#luru").click(function () {
+          let serial=document.getElementById("it1").value;//编号
+            if(!serial){
+                alert("编号错误");
+                return;
+            }
+          let xname=document.getElementById("unt").value;//姓名
+            if(!xname){
+                alert("姓名不能为空");
+                return;
+            }
+          let xsex=document.getElementById("sex").value;//性别
+            if(!xsex){
+                alert("性别不能为空")
+                return;
+            }
+          let xidentity=document.getElementById("zj").value;//证件号码
+            if(!xidentity){
+                alert("证件号码不能为空")
+                return;
+            }
+          let xmonad=document.getElementById("dw").value;//工作单位
+          let xdomicile=document.getElementById("zs").value;//住所
+            if(!xdomicile){
+                alert("住所不能为空")
+                return;
+            }
+          let category=document.getElementById("lm").value; //类目
+            if(!category){
+                alert("体检类目不能为空")
+                return;
+            }
+          let tel=document.getElementById("tel").value; //电话
+            if(!tel){
+                alert("电话不能为空")
+                return;
+            }
+          let expense=document.getElementById("fy").innerHTML; //合计费用
+          $.ajax({
+              type:'get',
+              url:'http://127.0.0.1:3000/xxdj/tjdj',
+              data:{serial,xname,xsex,xidentity, xmonad,xdomicile,category,tel,expense},
+              dataType:'json',
+              timeout:3000,
+              success:function(data){
+                alert("体检登记录入成功");
+                  document.querySelector("div.ct").innerHTML="";
+                  $.get('http://127.0.0.1:3000/xxdj',function(result){
+                      var list=result.result;
+                      var html="";
+                      for(let item of list){
+                          html+=`<div class="yt"><div style="width:10%">${item.serial}</div><div style="width:16%">${item.xname}</div><div style="width:10%">${item.xsex}</div><div style="width:50%">${item.xmonad}</div><divstyle="width:14%">${item.tel}</divstyle="width:14%"></div>`
+                      }
+                      document.querySelector("div.ct").innerHTML=html;
+                      function doPrint(){
+                        bdhtml=window.document.body.innerHTML;
+                        sprnstr="<!--startprint-->"; //开始打印标识字符串有17个字符
+                        eprnstr="<!--endprint-->"; //结束打印标识字符串
+                        prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17); //从开始打印标识之后的内容
+                        prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); //截取开始标识和结束标识之间的内容
+                        window.document.body.innerHTML=prnhtml; //把需要打印的指定内容赋给body.innerHTML
+                        window.print(); //调用浏览器的打印功能打印指定区域
+                        window.document.body.innerHTML=bdhtml; // 最后还原页面
+                        parent.location.reload();
+                    }doPrint()
+                  })
+            },
+
+          });
+
+        });
+        $('.sy').click(function(){
+            window.location.href="./glsz.html?uname="+czy;
+        });
+        $('.zx').click(function(){
+            window.location.href="../index.html"
+        });
+    });
+</script>
+</html>
