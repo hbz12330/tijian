@@ -1,6 +1,6 @@
 body { width: 100%; height:auto; }
 .container{
-  width: 1280px; 
- height:auto; 
- margin: 0 auto;
+  width: 100%; 
+  height:auto; 
+  margin: 0 auto;
 }
