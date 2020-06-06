@@ -1,7 +1,7 @@
 *{margin: 0; padding: 0;}
 html{
     width: 100%;
-    background:darkcyan;
+    background:pink;
 }
 div.header{
     display: flex;
@@ -27,7 +27,6 @@ div.header>span{
 }
 .login>p>input{
     font-size: 25px;
-    width:100%;
     margin-bottom: 1px;
 }
 .login>p>button{
