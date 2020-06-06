@@ -13,5 +13,7 @@ border-bottom: 1px solid;
 }
 .body{
  text-align:center;
- 
+}
+.login p input{
+ width:50%;
 }
