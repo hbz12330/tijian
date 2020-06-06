@@ -11,6 +11,6 @@ box-sizing: border-box;
 }
 .header,.body{
    margin: 0 auto;
-   width: 85%;
+   width: 100%;
    border: 1px solid #000000;
 }
