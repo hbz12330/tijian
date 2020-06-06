@@ -27,6 +27,7 @@ div.header>span{
 }
 .login>p>input{
     font-size: 25px;
+    width:100%;
     margin-bottom: 1px;
 }
 .login>p>button{
