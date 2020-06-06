@@ -9,5 +9,8 @@ width: 100%;
 height: 115px;
 display: flex;
 line-height: 115px;
-border-bottom:1px solid #ff00;  
+border-bottom: 1px solid; 
+}
+.body{
+ text-algin:center;
 }
