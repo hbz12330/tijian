@@ -27,6 +27,9 @@ body {
  width:85%;
  min-height:100%;
  _height:100%;	
-	
-	
+}
+.header,.body{
+   margin: 0 auto;
+   width: 85%;
+   border: 1px solid #000000;
 }
