@@ -3,6 +3,7 @@ body { width: 100%; height:auto; }
   width:1200px; 
   height:auto; 
   margin: 0 auto;
+  background:blue;
 }
 .header{
 width: 100%;
