@@ -45,17 +45,17 @@
             document.getElementById('upwd').value = "";
             document.getElementById('jobNane').value = "";
         });
-        /*按下tab键触发
+        //按下tab键触发
         $("#uname").keydown(function (event) {
            //alert(event.keyCode);
             if(event.keyCode==9){
                var un=$("#uname").val();
                console.log(un)
             }
-        });*/
+        });
         //用户姓名鼠标离开后触发
         $("#uname").blur(function() {
-            /* var reg= /[\u4e00-\u9fa5]/g;
+             var reg= /[\u4e00-\u9fa5]/g;
              var un=$(this).val();
             if(un!=""){
                 var str=un.match(reg);
@@ -67,6 +67,7 @@
                 }
             }
             let uname = document.getElementById('uname').value;
+            /*
             $.ajax({
                 type: 'get',
                 url: 'http://127.0.0.1:3000/index/qqzb',
@@ -84,7 +85,7 @@
                     }
                 }
 
-            })
+            })*/
         });
         $("#upwd").blur(function() {
             let reg = /[0-9a-zA-Z]{3,8}/;
@@ -106,7 +107,7 @@
             if (jobNane == null) {
                 document.querySelector('.dlts').innerHTML = "操作员工号不能为空"
             } else {
-               /*
+                /*
                 $.ajax({
                     type: 'get',
                     url: 'http://127.0.0.1:3000/index',
